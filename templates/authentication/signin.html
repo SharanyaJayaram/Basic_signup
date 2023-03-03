@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
 </head>
+<<<<<<< HEAD
 
 <body>
 <style>
@@ -80,6 +81,12 @@
 
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="color: #e1e1e1;">
+=======
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+>>>>>>> main
         <strong>Message:</strong> {{ message }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -87,8 +94,12 @@
     </div>
     {% endfor %}
 
+<<<<<<< HEAD
     <div class="login-box">
     <h3>Log In</h3>
+=======
+    <h3>Log In to your account!</h3>
+>>>>>>> main
     <form method="post" action="/signin" class="mb-2">
         {% csrf_token %}
         <div class="form-group">
@@ -99,9 +110,15 @@
             <label for="pass1">Password</label>
             <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
         </div>
+<<<<<<< HEAD
         <a href="signup" style="color: #f40a0a ;font-size: 10px;">Not a User?Please Sign-up</a>
         <button type="submit" class="btn btn-primary">LogIn</button>
     </form>
   </div>
+=======
+
+        <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+>>>>>>> main
 </body>
 </html>
