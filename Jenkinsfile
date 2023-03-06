@@ -4,7 +4,7 @@ pipeline {
 
 		stage('Python Build') {
 			steps{
-				timeout(time: 10, unit: 'SECONDS'){
+				timeout(time: 2, unit: 'MINUTES'){
 				sh 'python3 manage.py migrate'
 				sh 'python3 manage.py runserver 0.0.0.0:8000'
 				}
