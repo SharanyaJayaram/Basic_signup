@@ -25,11 +25,11 @@ pipeline {
     }
     stage('Deploy Image to dockerhub') {
       steps{
-         sh 'dockerImage.push("latest")'
-//           withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'dockeridPassword', usernameVariable: 'dockeridUser')]) {
-//             sh "docker login -u ${env.dockeridUser} -p ${env.dockeridPassword}"
-//             sh 'docker push sharanyajayaram/trialpython:latest'
-//           }
+        // sh 'dockerImage.push("latest")'
+          withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'dockeridPassword', usernameVariable: 'dockeridUser')]) {
+            sh "docker login -u ${env.dockeridUser} -p ${env.dockeridPassword}"
+            sh 'docker push sharanyajayaram/trialpython:latest'
+          }
       }
     }
     stage('Run the container'){
