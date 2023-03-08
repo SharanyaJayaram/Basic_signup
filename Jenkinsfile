@@ -19,7 +19,7 @@ pipeline {
       stage('Building image') {
       steps{
         //script {
-        dockerImage = docker.build imagename
+        sh 'dockerImage = docker.build imagename'
        // }
       }
     }
@@ -40,10 +40,10 @@ pipeline {
       docker system prune -af'''
       }
     }
-      post{
+ }
+    post{
           success{
-              echo "Container is up and running"
+              sh 'echo "Container is up and running"'
           }
       }
-          }
       }
