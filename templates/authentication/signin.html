@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
 </head>
-<<<<<<< HEAD
 
 <body>
 <style>
@@ -33,7 +32,7 @@
     border-radius: 180px;
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
   }
-  .login-box h3 {
+  .login-box h1 {
     text-align: center;
     font-size: 22px;
     margin-bottom: 20px;
@@ -64,7 +63,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left:  10px;
-    padding-right: 60px;
+    padding-right: 50px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -74,19 +73,11 @@
   }
   .login-box button[type="submit"]:hover {
     background-color: #ce2f2f;
-    transform: scale(1.3,1.3);
-    transition: .3s transform;
   }
     </style>
 
     {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="color: #e1e1e1;">
-=======
-<body>
-
-    {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
->>>>>>> main
         <strong>Message:</strong> {{ message }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -94,12 +85,7 @@
     </div>
     {% endfor %}
 
-<<<<<<< HEAD
-    <div class="login-box">
-    <h3>Log In</h3>
-=======
     <h3>Log In to your account!</h3>
->>>>>>> main
     <form method="post" action="/signin" class="mb-2">
         {% csrf_token %}
         <div class="form-group">
@@ -110,15 +96,8 @@
             <label for="pass1">Password</label>
             <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Enter Your Password" Required>
         </div>
-<<<<<<< HEAD
-        <a href="signup" style="color: #f40a0a ;font-size: 10px;">Not a User?Please Sign-up</a>
-        <button type="submit" class="btn btn-primary">LogIn</button>
-    </form>
-  </div>
-=======
 
         <button type="submit" class="btn btn-primary">Log In</button>
     </form>
->>>>>>> main
 </body>
 </html>
