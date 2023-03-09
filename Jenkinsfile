@@ -34,7 +34,7 @@ pipeline {
     }
     stage('Run the container'){
       steps{
-      sh '''docker pull shrth7/devops:latest"
+      sh '''docker pull shrth7/devops:latest
       docker run -d -t -p 8000:8000 --name trialcont${BUILD_NUMBER} shrth7/devops:latest
       docker stop --time=60 trialcont${BUILD_NUMBER}
       docker system prune -af'''
