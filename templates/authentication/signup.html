@@ -7,6 +7,10 @@
     <title>Sign Up</title>
 </head>
 <body>
+<script src="https://unpkg.com/htmx.org@1.8.0"
+        integrity="sha384-cZuAZ+ZbwkNRnrKi05G/fjBX+azI9DNOkNYysZ0I/X5ZFgsmMiBXgDZof30F5ofc" crossorigin="anonymous">
+</script>
+
 <style>
           body{
           margin:0;
@@ -33,7 +37,10 @@
           {% csrf_token %}
           <div class="form-group">
               <label for="username">Username</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" Required>
+              <input type="text" name="username" id="username" placeholder="Enter Your Username" Required class="form-control"
+                hx-post="{% url 'signup' %}" hx-target="#username-check" hx-trigger="keyup">
+
+            <div id="username-check"></div>
           </div>
           <div class="form-group">
               <label for="fname">First Name</label>
@@ -45,8 +52,12 @@
           </div>
           <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address" Required>
+              <input type="text" name="email" id="email" placeholder="Enter Your Email" Required
+                hx-post="{% url 'signup' %}" hx-target="#email-check" hx-trigger="keyup">
+
+            <div id="email-check"></div>
           </div>
+
           <div class="form-group">
               <label for="pass1">Password</label>
               <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Create Your Password" Required>
