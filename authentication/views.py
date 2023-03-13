@@ -21,6 +21,7 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
+
         # if User.objects.filter(username=username):
         #     messages.error(request, "Username already exist! Please try some other username.")
         #     return redirect('signin')
@@ -36,13 +37,14 @@ def signup(request):
         except:
             pass
 
+
         try:
             if User.objects.get(email=email):
                 messages.info(request, "Email id Is Taken")
                 return redirect('signup')
         except:
             pass
-
+            
 
 
         if len(username) < 8:
