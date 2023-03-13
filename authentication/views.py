@@ -29,18 +29,20 @@ def signup(request):
         #     messages.error(request, "Email Already Registered!!")
         #     return redirect('signin')
 
-        # try:
-        #     if User.objects.get(username=username):
-        #         messages.info(request, "UserName Is Taken")
-        #         return redirect('signup')
-        # except:
-        #     pass
-        if get_user_model().objects.filter(username=username).exists():
-            return HttpResponse('<div style="color: red"> This username already exists </div>')
-        elif get_user_model().objects.filter(email=email).exists():
-            return HttpResponse('<div style="color: red"> This email id already exists </div>')
-        else:
-            return HttpResponse('<div style="color: green"> Available </div>')
+        try:
+            if User.objects.get(username=username):
+                messages.info(request, "UserName Is Taken")
+                return redirect('signup')
+        except:
+            pass
+
+        try:
+            if User.objects.get(email=email):
+                messages.info(request, "Email id Is Taken")
+                return redirect('signup')
+        except:
+            pass
+
 
 
         if len(username) < 8:
@@ -50,8 +52,6 @@ def signup(request):
         if username.isalpha():
             messages.error(request, "Username must be Alpha-Numeric!!")
             return redirect('signup')
-
-
 
         def validate_password(password):
             # regex = re.compile(r'[@_!#$%^&*()<>?/\|}{~:]')
