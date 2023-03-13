@@ -21,26 +21,30 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
 
-        # if User.objects.filter(username=username):
-        #     messages.error(request, "Username already exist! Please try some other username.")
-        #     return redirect('signin')
-        #
-        # if User.objects.filter(email=email).exists():
-        #     messages.error(request, "Email Already Registered!!")
-        #     return redirect('signin')
+        if User.objects.filter(username=username):
+            messages.error(request, "Username already exist! Please try some other username.")
+            return redirect('signin')
+        
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email Already Registered!!")
+            return redirect('signin')
 
-        # try:
-        #     if User.objects.get(username=username):
-        #         messages.info(request, "UserName Is Taken")
-        #         return redirect('signup')
-        # except:
-        #     pass
-        if get_user_model().objects.filter(username=username).exists():
-            return HttpResponse('<div style="color: red"> This username already exists </div>')
-        elif get_user_model().objects.filter(email=email).exists():
-            return HttpResponse('<div style="color: red"> This email id already exists </div>')
-        else:
-            return HttpResponse('<div style="color: green"> Available </div>')
+        try:
+            if User.objects.get(username=username):
+                messages.info(request, "UserName Is Taken")
+                return redirect('signup')
+        except:
+            pass
+
+        # if get_user_model().objects.filter(username=username).exists():
+        #     return HttpResponse('<div style="color: red"> This username already exists </div>')
+        # else:
+        #     return HttpResponse('<div style="color: green"> Available </div>')
+
+        # if get_user_model().objects.filter(email=email).exists():
+        #     return HttpResponse('<div style="color: red"> This email id already exists </div>')
+        # else:
+        #     return HttpResponse('<div style="color: green"> Available </div>')
 
 
         if len(username) < 8:
