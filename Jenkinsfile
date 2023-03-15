@@ -1,8 +1,5 @@
 pipeline {
-  environment {
-    imagename = "sharanyajayaram/trialpython"
-    dockerImage = ''
-  }
+
   agent any
     options { 
         timestamps ()
@@ -19,25 +16,20 @@ pipeline {
       stage('Building image') {
       steps{
         //script {
-        sh 'dockerImage = docker.build imagename'
+
        // }
       }
     }
     stage('Deploy Image to dockerhub') {
       steps{
         // sh 'dockerImage.push("latest")'
-          withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'dockeridPassword', usernameVariable: 'dockeridUser')]) {
-            sh "docker login -u ${env.dockeridUser} -p ${env.dockeridPassword}"
-            sh 'docker push sharanyajayaram/trialpython:latest'
+
           }
       }
     }
     stage('Run the container'){
       steps{
-      sh '''docker pull sharanyajayaram/trialpython:latest"
-      docker run -d -t -p 8000:8000 --name trialcont${BUILD_NUMBER} sharanyajayaram/trialpython:latest
-      docker stop --time=60 trialcont${BUILD_NUMBER}
-      docker system prune -af'''
+
       }
     }
  }
