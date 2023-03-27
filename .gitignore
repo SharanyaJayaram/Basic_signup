@@ -1,3 +1,4 @@
-db.sqlite3
+
 authentication/_pycache_
-Website/_pychache_
+Website/_pycache_
+db.sqlite3
