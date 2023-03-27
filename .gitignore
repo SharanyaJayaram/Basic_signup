@@ -1,3 +1,7 @@
 
-_pycache_
+# Ignore the SQLite database file
 db.sqlite3
+
+# Ignore Python's __pycache__ directory
+__pycache__/
+
