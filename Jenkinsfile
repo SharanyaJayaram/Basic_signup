@@ -18,7 +18,9 @@ pipeline {
     }
       stage('Building image') {
       steps{
-       dockerImage = docker.build imagename
+	      script{
+       sh 'dockerImage = docker.build imagename'
+	      }
       }
     }
     stage('Deploy Image to dockerhub') {
